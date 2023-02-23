@@ -2,7 +2,9 @@
 pdf 병합 프로그램<br>
                
 □ 제작배경 : 사내망에서 PDF병합 사이트들이 열리지 않기에<br>
-
+※ 개발 진행중 (현재 초안이지만 작동은 잘됨)<br>
+ ① 조건문 추가 필요
+ ② UX 인터렉션 추가 필요
 
 <img width="500" alt="방법" src="https://user-images.githubusercontent.com/62700997/220657815-c2ae7a97-aca5-4efb-a9cc-252a6e921c3d.PNG">
 
