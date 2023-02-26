@@ -1,4 +1,6 @@
 import os
+import tkinter as tk
+import tkinter.simpledialog as sd
 from PyPDF2 import PdfMerger
 
 ################ 함수 ################
@@ -6,9 +8,18 @@ from PyPDF2 import PdfMerger
 def ouput_pdf_name(num):
     all_pdfs = []
     for i in range(num):
-        pdf_name = input(f"{i+1}번째 PDF의 파일명을 입력하세요 : ")
+        win4 = tk.Tk()
+        win4.withdraw()
+        win4.resizable(True, True)
+        win4.geometry('600x200+500+500')
+        win4.option_add("*Font", "Arial 10")
+        pdf_name = sd.askstring("PDF 생성", f"{i+1}번째 PDF의 파일명을 입력하세요")
         new_pdf_name = naming(pdf_name)
         all_pdfs.append(new_pdf_name)
+
+        # pdf_name = input(f"{i+1}번째 PDF의 파일명을 입력하세요 : ")
+        # new_pdf_name = naming(pdf_name)
+        # all_pdfs.append(new_pdf_name)
     return all_pdfs
 
 # 파일이름 뒤에 .pdf 붙혀주는 함수
@@ -18,15 +29,34 @@ def naming (pdf_name) :
 
 ################ MAIN ################
 #1) 변환하고 싶은 파일이 있는 주소 붙혀넣기
-current_directory = input("변환하고 싶은 파일이 있는 주소를 붙혀넣으세요 : ")
+win1 = tk.Tk()
+win1.withdraw()
+win1.resizable(True, True)
+win1.geometry('600x200+500+500')
+win1.option_add("*Font", "Arial 10")
+current_directory = sd.askstring("파일주소입력", "변환하고 싶은 파일이 있는 주소를 붙혀넣으세요")
+
+# if current_directory:
+#     print("User entered:", current_directory)
+# else:
+#     print("User cancelled the input dialog.")
 
 #2) PDF 병합 과정
-num_pdfs = int(input("병합할 PDF 개수를 입력하세요 : "))
+win2 = tk.Tk()
+win2.withdraw()
+win2.resizable(True, True)
+win2.geometry('600x200+500+500')
+win2.option_add("*Font", "Arial 10")
+num_pdfs = sd.askinteger("PDF 개수", "병합할 PDF 개수를 입력하세요")
 all_pdfs = ouput_pdf_name(num_pdfs)
-print("병합할 PDF파일들은 아래와 같습니다\n", all_pdfs)
 
 #3) 병합된 PDF 파일 이름 작성
-merged_file_name = naming(input("최종 PDF 이름을 써주세요 : "))
+win3 = tk.Tk()
+win3.withdraw()
+win3.resizable(True, True)
+win3.geometry('600x200+500+500')
+win3.option_add("*Font", "Arial 10")
+merged_file_name = sd.askstring("PDF 생성", "최종 PDF 이름을 써주세요")
 
 ################ 추가 과정 ################
 #1) 파일 디렉토리를 새롭게 변환하는 과정
