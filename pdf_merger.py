@@ -16,10 +16,6 @@ def ouput_pdf_name(num):
         pdf_name = sd.askstring("PDF 생성", f"{i+1}번째 PDF의 파일명을 입력하세요")
         new_pdf_name = naming(pdf_name)
         all_pdfs.append(new_pdf_name)
-
-        # pdf_name = input(f"{i+1}번째 PDF의 파일명을 입력하세요 : ")
-        # new_pdf_name = naming(pdf_name)
-        # all_pdfs.append(new_pdf_name)
     return all_pdfs
 
 # 파일이름 뒤에 .pdf 붙혀주는 함수
@@ -36,11 +32,6 @@ win1.geometry('600x200+500+500')
 win1.option_add("*Font", "Arial 10")
 current_directory = sd.askstring("파일주소입력", "변환하고 싶은 파일이 있는 주소를 붙혀넣으세요")
 
-# if current_directory:
-#     print("User entered:", current_directory)
-# else:
-#     print("User cancelled the input dialog.")
-
 #2) PDF 병합 과정
 win2 = tk.Tk()
 win2.withdraw()
@@ -56,15 +47,15 @@ win3.withdraw()
 win3.resizable(True, True)
 win3.geometry('600x200+500+500')
 win3.option_add("*Font", "Arial 10")
-merged_file_name = sd.askstring("PDF 생성", "최종 PDF 이름을 써주세요")
+merged_file_name = naming(sd.askstring("PDF 생성", "최종 PDF 이름을 써주세요"))
 
 ################ 추가 과정 ################
 #1) 파일 디렉토리를 새롭게 변환하는 과정
-print('# 현재 파일 경로:', __file__)
-print('# 실행 폴더 경로:', os.getcwd())
-print("# 변경 전 작업디렉토리: %s"%os.getcwd())
+# print('# 현재 파일 경로:', __file__)
+# print('# 실행 폴더 경로:', os.getcwd())
+# print("# 변경 전 작업디렉토리: %s"%os.getcwd())
 os.chdir(current_directory)
-print("→ 변경 후 작업디렉토리: %s"%os.getcwd())
+# print("→ 변경 후 작업디렉토리: %s"%os.getcwd())
 
 #2) PDF 병합 과정
 merger = PdfMerger()
