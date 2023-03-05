@@ -1,0 +1,13 @@
+from tkinter import filedialog, Tk
+from PyPDF2 import PdfMerger
+import PyPDF2
+
+root = Tk()
+root.withdraw() # Hide the main window
+pdf_files = filedialog.askopenfilenames(filetypes=[("PDF Files", "*.pdf")])
+merger = PdfMerger()
+for file in pdf_files:
+    merger.append(file)
+save_path = filedialog.asksaveasfilename(defaultextension=".pdf")
+merger.write(save_path)
+merger.close()
